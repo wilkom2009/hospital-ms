@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HrResources {
 
     static List<Employee> fackEmployees = Arrays.asList(new Employee("E1", "Afouno", "ALOUKA", "Cardiologue"),
-            new Employee("E2", "Smith", "DJONHSON", "Pediatre"));
+            new Employee("E2", "Smith", "DJONHSON", "Pediatre"), new Employee("E3", "Afouno", "KOMI", "Labortin"));
 
     @GetMapping("/employees")
     public EmployeesList getEmployees() {

@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "admission-service-ms"
+		},
+		{
+			"path": "hr-service-ms"
+		},
+		{
+			"name": "pathology-service-ms",
+			"path": "pathology-service-ms"
+		},
+		{
+			"name": "discovery-server",
+			"path": "discovery-server"
+		},
+		{
+			"name": "gateway-service",
+			"path": "gateway-service"
+		},
+		{
+			"path": "hystrix-dbd"
+		},
+		{
+			"path": "cloud-config-server"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
