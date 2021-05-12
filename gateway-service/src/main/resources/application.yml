@@ -1,0 +1,52 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: admission-service
+          uri: lb://admission-service
+          predicates:
+          - Path=/admissions/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: admission-service
+                fallbackuri: forward:/admissionServiceFallBack
+        - id: hr-service
+          uri: lb://hr-service
+          predicates:
+          - Path=/hr/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: hr-service
+                fallbackuri: forward:/hrServiceFallBack
+        - id: pathology-service
+          uri: lb://pathology-service
+          predicates:
+          - Path=/pathology/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: pathology-service
+                fallbackuri: forward:/pathologyServiceFallBack
+
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
